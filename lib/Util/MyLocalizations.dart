@@ -33,6 +33,15 @@ class MyLocalizations {
       'pleaseEnterPieces_text': 'Please enter the number of pieces',
       'male_text': 'Male',
       'female_text': 'Female',
+      'pleaseEnterGetCode_text': 'Please enter the pick-up code',
+      'getCodeLoss_text': 'Proof loss',
+      'hotel_text' : 'Hotel owned by',
+      'personalInformation_text' : 'Personal information',
+      'orderList_text' : 'Order list',
+      'LanguageSetting_text' : 'Language settings',
+      'aboutUs_text' : 'About us',
+      'checkUpdate_text' : 'Check update',
+      'quit_text' : 'Quit',
     },
     'zh_CN': {
       'skip_text': '跳过',
@@ -61,6 +70,15 @@ class MyLocalizations {
       'pleaseEnterPieces_text': '请选择件数',
       'male_text': '先生',
       'female_text': '女士',
+      'pleaseEnterGetCode_text': '请输入取货码',
+      'getCodeLoss_text': '凭证丢失',
+      'hotel_text' : '所属酒店',
+      'personalInformation_text' : '个人信息',
+      'orderList_text' : '订单列表',
+      'LanguageSetting_text' : '语言设置',
+      'aboutUs_text' : '关于我们',
+      'checkUpdate_text' : '检查更新',
+      'quit_text' : '退出登录',
     },
     'zh_HK': {
       'skip_text': '跳過',
@@ -89,6 +107,15 @@ class MyLocalizations {
       'pleaseEnterPieces_text': '請選擇件數',
       'male_text': '先生',
       'female_text': '女士',
+      'pleaseEnterGetCode_text': '請輸入取貨碼',
+      'getCodeLoss_text': '憑證丟失',
+      'hotel_text' : '所屬酒店',
+      'personalInformation_text' : '個人信息',
+      'orderList_text' : '訂單列表',
+      'LanguageSetting_text' : '語言設置',
+      'aboutUs_text' : '關於我們',
+      'checkUpdate_text' : '檢查更新',
+      'quit_text' : '退出登陸',
     }
   };
 
@@ -194,6 +221,42 @@ class MyLocalizations {
 
   get femaleText {
     return _localizedValuesMap[_locale.toString()]['female_text'];
+  }
+
+  get getcodeText {
+    return _localizedValuesMap[_locale.toString()]['pleaseEnterGetCode_text'];
+  }
+
+  get getcodeLossText {
+    return _localizedValuesMap[_locale.toString()]['getCodeLoss_text'];
+  }
+
+  get hotelText {
+    return _localizedValuesMap[_locale.toString()]['hotel_text'];
+  }
+
+  get personalInformationText {
+    return _localizedValuesMap[_locale.toString()]['personalInformation_text'];
+  }
+
+  get orderListText {
+    return _localizedValuesMap[_locale.toString()]['orderList_text'];
+  }
+
+  get languageSettingText {
+    return _localizedValuesMap[_locale.toString()]['LanguageSetting_text'];
+  }
+
+  get aboutUsText {
+    return _localizedValuesMap[_locale.toString()]['aboutUs_text'];
+  }
+
+  get checkUpdateText {
+    return _localizedValuesMap[_locale.toString()]['checkUpdate_text'];
+  }
+
+  get quitText {
+    return _localizedValuesMap[_locale.toString()]['quit_text'];
   }
 
   static MyLocalizations of(BuildContext context) {

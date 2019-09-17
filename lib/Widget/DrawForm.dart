@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:luggagemanagementsystem/Util/MyLocalizations.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class DrawForm extends StatefulWidget {
@@ -42,12 +43,12 @@ class DrawFormState extends State<DrawForm> {
               child: TextFormField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: '请输入取货码',
+                  labelText: '${MyLocalizations.of(context).getcodeText}',
                   prefixIcon: Icon(Icons.content_paste),
                 ),
                 validator: (String value) {
                   if (value.isEmpty) {
-                    return '请输入取货码';
+                    return '${MyLocalizations.of(context).getcodeText}';
                   }
                 },
                 onSaved: (String value) {
@@ -70,7 +71,7 @@ class DrawFormState extends State<DrawForm> {
                     Navigator.of(context).pushNamed('/lose');
                   },
                   child: Text(
-                    '凭证丢失？',
+                    '${MyLocalizations.of(context).getcodeLossText}？',
                     style: TextStyle(
                       decoration: TextDecoration.underline,
                       fontSize: ScreenUtil.getInstance().setHeight(40.0),
@@ -97,7 +98,7 @@ class DrawFormState extends State<DrawForm> {
                   height: ScreenUtil.getInstance().setHeight(80.0),
                   width: ScreenUtil.getInstance().setWidth(400.0),
                   child: Text(
-                    '领取',
+                    '${MyLocalizations.of(context).drawText}',
                     style: TextStyle(
                       fontSize: ScreenUtil.getInstance().setHeight(40.0),
                       fontWeight: FontWeight.bold,
@@ -111,6 +112,8 @@ class DrawFormState extends State<DrawForm> {
             QrImage(
               data: 'D180',
               size: 100.0,
+              embeddedImage: AssetImage('images/pic.png'),
+              embeddedImageStyle: QrEmbeddedImageStyle(size: Size(40, 40)),
             ),
             Text(_barcode),
             RaisedButton(onPressed: (){

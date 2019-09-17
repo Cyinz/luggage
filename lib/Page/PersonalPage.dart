@@ -73,14 +73,14 @@ class PersonalState extends State<PersonalPage> {
                 margin: EdgeInsets.only(
                     top: ScreenUtil.getInstance().setHeight(10.0)),
                 child: Text(
-                  '姓名：${name}',
+                  '${MyLocalizations.of(context).nameText}：${name}',
                   style: TextStyle(
                       fontSize: ScreenUtil.getInstance().setHeight(38.0)),
                 ),
               ),
               Container(
                 child: Text(
-                  '所属酒店：${hotel}',
+                  '${MyLocalizations.of(context).hotelText}：${hotel}',
                   style: TextStyle(
                       fontSize: ScreenUtil.getInstance().setHeight(38.0)),
                 ),
@@ -98,7 +98,7 @@ class PersonalState extends State<PersonalPage> {
                           Icons.person_outline,
                           color: Colors.teal,
                         ),
-                        title: Text('个人信息'),
+                        title: Text('${MyLocalizations.of(context).personalInformationText}'),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.grey[350],
@@ -119,7 +119,7 @@ class PersonalState extends State<PersonalPage> {
                           Icons.list,
                           color: Colors.teal,
                         ),
-                        title: Text('订单列表'),
+                        title: Text('${MyLocalizations.of(context).orderListText}'),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.grey[350],
@@ -137,7 +137,7 @@ class PersonalState extends State<PersonalPage> {
                           Icons.settings,
                           color: Colors.teal,
                         ),
-                        title: Text('语言设置'),
+                        title: Text('${MyLocalizations.of(context).languageSettingText}'),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.grey[350],
@@ -158,7 +158,7 @@ class PersonalState extends State<PersonalPage> {
                           Icons.message,
                           color: Colors.teal,
                         ),
-                        title: Text('关于我们'),
+                        title: Text('${MyLocalizations.of(context).aboutUsText}'),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.grey[350],
@@ -176,7 +176,7 @@ class PersonalState extends State<PersonalPage> {
                           Icons.update,
                           color: Colors.teal,
                         ),
-                        title: Text('检查更新'),
+                        title: Text('${MyLocalizations.of(context).checkUpdateText}'),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.grey[350],
@@ -200,7 +200,7 @@ class PersonalState extends State<PersonalPage> {
                     height: ScreenUtil.getInstance().setHeight(100.0),
                     alignment: Alignment.center,
                     child: Text(
-                      "退出登录",
+                      "${MyLocalizations.of(context).quitText}",
                       style: new TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
