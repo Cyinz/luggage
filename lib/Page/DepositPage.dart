@@ -18,7 +18,9 @@ class DepositState extends State<DepositPage> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: SafeArea(child: DepositForm()),
+      body: SingleChildScrollView(
+        child: DepositForm(),
+      ),
     );
   }
 }

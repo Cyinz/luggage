@@ -20,6 +20,7 @@ class DrawFormState extends State<DrawForm> {
 
   //行李领取码
   String _getcode;
+
   //状态码
   int state;
 
@@ -109,16 +110,19 @@ class DrawFormState extends State<DrawForm> {
               ),
             ),
 
+            Text(_barcode),
+            RaisedButton(
+              onPressed: () {
+                scan();
+              },
+              child: Text('${MyLocalizations.of(context).scanText}'),
+            ),
             QrImage(
               data: 'D180',
               size: 100.0,
               embeddedImage: AssetImage('images/pic.png'),
               embeddedImageStyle: QrEmbeddedImageStyle(size: Size(40, 40)),
             ),
-            Text(_barcode),
-            RaisedButton(onPressed: (){
-              scan();
-            },child: Text('Button'),)
           ],
         ),
       ),
@@ -126,25 +130,21 @@ class DrawFormState extends State<DrawForm> {
   }
 
   Future scan() async {
-    try{
+    try {
       String barcode = await BarcodeScanner.scan();
       print('扫码结果：' + barcode);
       setState(() {
         _barcode = barcode;
       });
-    }
-    on PlatformException catch (e){
-      if(e.code == BarcodeScanner.CameraAccessDenied){
+    } on PlatformException catch (e) {
+      if (e.code == BarcodeScanner.CameraAccessDenied) {
         print('未授予APP相机权限');
-      }
-      else{
+      } else {
         print('扫码错误：$e');
       }
-    }
-    on FormatException{
+    } on FormatException {
       print('进入扫码页面后未扫码就返回');
-    }
-    catch(e){
+    } catch (e) {
       print('扫码错误：$e');
     }
   }

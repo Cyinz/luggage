@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:luggagemanagementsystem/Page/LoginPage.dart';
 import 'package:luggagemanagementsystem/Page/LosePage.dart';
 import 'package:luggagemanagementsystem/Page/OrderListPage.dart';
+import 'package:luggagemanagementsystem/Page/TodayOrdersPage.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizations.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizationsDelegate.dart';
 
@@ -86,6 +87,8 @@ class MyAppState extends State<MyApp> {
         '/orderlist': (context) => OrderListPage(),
         //语言设置页面
         '/language': (context) => LanguagePage(),
+        //统计某一日期的行李件数
+        '/today' : (context) => TodayOrdersPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

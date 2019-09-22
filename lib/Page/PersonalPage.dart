@@ -129,6 +129,42 @@ class PersonalState extends State<PersonalPage> {
                     Divider(
                       height: ScreenUtil.getInstance().setHeight(1.0),
                     ),
+//                    Container(
+//                      height: ScreenUtil.getInstance().setHeight(120.0),
+//                      color: Colors.white,
+//                      child: ListTile(
+//                        leading: Icon(
+//                          Icons.message,
+//                          color: Colors.teal,
+//                        ),
+//                        title: Text('${MyLocalizations.of(context).aboutUsText}'),
+//                        trailing: Icon(
+//                          Icons.arrow_forward_ios,
+//                          color: Colors.grey[350],
+//                        ),
+//                      ),
+//                    ),
+                    Container(
+                      height: ScreenUtil.getInstance().setHeight(120.0),
+                      color: Colors.white,
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.today,
+                          color: Colors.teal,
+                        ),
+                        title: Text('${MyLocalizations.of(context).todayOrdersText}'),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.grey[350],
+                        ),
+                        onTap: (){
+                          Navigator.of(context).pushNamed('/today');
+                        },
+                      ),
+                    ),
+                    Divider(
+                      height: ScreenUtil.getInstance().setHeight(1.0),
+                    ),
                     Container(
                       height: ScreenUtil.getInstance().setHeight(120.0),
                       color: Colors.white,
@@ -149,24 +185,6 @@ class PersonalState extends State<PersonalPage> {
                     ),
                     Divider(
                       height: ScreenUtil.getInstance().setHeight(2.0),
-                    ),
-                    Container(
-                      height: ScreenUtil.getInstance().setHeight(120.0),
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.message,
-                          color: Colors.teal,
-                        ),
-                        title: Text('${MyLocalizations.of(context).aboutUsText}'),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.grey[350],
-                        ),
-                      ),
-                    ),
-                    Divider(
-                      height: ScreenUtil.getInstance().setHeight(1.0),
                     ),
                     Container(
                       height: ScreenUtil.getInstance().setHeight(120.0),

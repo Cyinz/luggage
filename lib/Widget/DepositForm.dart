@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_icons/font_awesome.dart';
 import 'package:intl/intl.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizations.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:date_format/date_format.dart';
 
@@ -22,21 +23,29 @@ class DepositFormState extends State<DepositForm> {
 
   //客户姓名
   String _saverName;
+
   //客户手机号
   String _phoneNumber;
+
   //性别
   int _gender = 1;
+
   //接待行李员姓名
   String _recieveName;
+
   //行李员所属酒店
   String _hotel;
+
   //行李描述
   String _luggageDescribe;
+
   //行李寄存的时间
   String _saveTime;
+
   //行李预计存放的时间
   String _saveForeTime =
       '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
+
   //行李件数
   int _number;
 
@@ -45,7 +54,11 @@ class DepositFormState extends State<DepositForm> {
     List<DropdownMenuItem> items = new List<DropdownMenuItem>.generate(
         10,
         (i) => new DropdownMenuItem(
-              child: Text('${i + 1}${MyLocalizations.of(context).pieceText}',style: TextStyle(fontSize: ScreenUtil.getInstance().setWidth(35.0)),),
+              child: Text(
+                '${i + 1}${MyLocalizations.of(context).pieceText}',
+                style: TextStyle(
+                    fontSize: ScreenUtil.getInstance().setWidth(35.0)),
+              ),
               value: i + 1,
             ));
     return items;
@@ -184,8 +197,8 @@ class DepositFormState extends State<DepositForm> {
                                 child: Text(
                                   '${MyLocalizations.of(context).nameText}：',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.getInstance()
-                                        .setWidth(35.0),
+                                    fontSize:
+                                        ScreenUtil.getInstance().setWidth(35.0),
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -217,15 +230,17 @@ class DepositFormState extends State<DepositForm> {
                           ]),
                           TableRow(children: [
                             Container(
-                              padding: EdgeInsets.only(top: ScreenUtil.getInstance().setHeight(25.0)),
+                              padding: EdgeInsets.only(
+                                  top:
+                                      ScreenUtil.getInstance().setHeight(25.0)),
                               height: ScreenUtil.getInstance().setHeight(80.0),
                               child: Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(
                                   '${MyLocalizations.of(context).genderText}：',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.getInstance()
-                                        .setWidth(35.0),
+                                    fontSize:
+                                        ScreenUtil.getInstance().setWidth(35.0),
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -302,8 +317,8 @@ class DepositFormState extends State<DepositForm> {
                                 child: Text(
                                   '${MyLocalizations.of(context).phoneText}：',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.getInstance()
-                                        .setWidth(35.0),
+                                    fontSize:
+                                        ScreenUtil.getInstance().setWidth(35.0),
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -341,8 +356,8 @@ class DepositFormState extends State<DepositForm> {
                                 child: Text(
                                   '${MyLocalizations.of(context).storeToText}：',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.getInstance()
-                                        .setWidth(35.0),
+                                    fontSize:
+                                        ScreenUtil.getInstance().setWidth(35.0),
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -384,8 +399,8 @@ class DepositFormState extends State<DepositForm> {
                                 child: Text(
                                   '${MyLocalizations.of(context).piecesText}：',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.getInstance()
-                                        .setWidth(35.0),
+                                    fontSize:
+                                        ScreenUtil.getInstance().setWidth(35.0),
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -434,8 +449,8 @@ class DepositFormState extends State<DepositForm> {
                                 child: Text(
                                   '${MyLocalizations.of(context).describeText}：',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.getInstance()
-                                        .setWidth(35.0),
+                                    fontSize:
+                                        ScreenUtil.getInstance().setWidth(35.0),
                                     color: Colors.grey[600],
                                   ),
                                 ),
@@ -532,7 +547,21 @@ class DepositFormState extends State<DepositForm> {
           if (data['status'] == 200) {
             return AlertDialog(
               title: Text('寄存成功'),
-              content: Text(data['msg'].toString()),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    data['msg'].toString(),
+                  ),
+                  QrImage(
+                    data: '${data['data'].toString()}',
+                    size: 100.0,
+                    embeddedImage: AssetImage('images/pic.png'),
+                    embeddedImageStyle:
+                        QrEmbeddedImageStyle(size: Size(40, 40)),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () {

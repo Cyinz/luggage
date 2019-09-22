@@ -42,6 +42,8 @@ class MyLocalizations {
       'aboutUs_text' : 'About us',
       'checkUpdate_text' : 'Check update',
       'quit_text' : 'Quit',
+      'scan_text' : 'Scan',
+      'todayOrders-text' : 'Statistical Order Number',
     },
     'zh_CN': {
       'skip_text': '跳过',
@@ -79,6 +81,8 @@ class MyLocalizations {
       'aboutUs_text' : '关于我们',
       'checkUpdate_text' : '检查更新',
       'quit_text' : '退出登录',
+      'scan_text' : '扫一扫',
+      'todayOrders-text' : '统计订单数',
     },
     'zh_HK': {
       'skip_text': '跳過',
@@ -116,6 +120,8 @@ class MyLocalizations {
       'aboutUs_text' : '關於我們',
       'checkUpdate_text' : '檢查更新',
       'quit_text' : '退出登陸',
+      'scan_text' : '掃一掃',
+      'todayOrders-text' : '統計訂單數',
     }
   };
 
@@ -257,6 +263,14 @@ class MyLocalizations {
 
   get quitText {
     return _localizedValuesMap[_locale.toString()]['quit_text'];
+  }
+
+  get scanText {
+    return _localizedValuesMap[_locale.toString()]['scan_text'];
+  }
+
+  get todayOrdersText {
+    return _localizedValuesMap[_locale.toString()]['todayOrders-text'];
   }
 
   static MyLocalizations of(BuildContext context) {
