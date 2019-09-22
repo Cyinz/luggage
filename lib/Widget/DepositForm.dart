@@ -505,7 +505,7 @@ class DepositFormState extends State<DepositForm> {
                   _depositFormKey.currentState.save();
                   print(
                       '客户姓名；${_saverName},性别：${_gender},手机号:${_phoneNumber},行李员姓名：${_recieveName},行李员所属酒店：${_hotel},行李描述：${_luggageDescribe}, 当前时间：${_saveTime}, 预计领取时间: ${_saveForeTime}, 件数：${_number}');
-                  //deposit();
+                  deposit();
                   _depositFormKey.currentState.reset();
                 },
               ),
@@ -523,22 +523,26 @@ class DepositFormState extends State<DepositForm> {
       _sex = '女';
     }
 
-    Response response;
-    FormData formData = FormData.from({
-      'savername': _saverName,
-      'gender': _sex,
-      'phonenumber': _phoneNumber,
-      'recievername': _recieveName,
-      'hotel': _hotel,
-      'luggagedescribe': _luggageDescribe,
-      'savetime': _saveTime,
-      'saveforetime': _saveForeTime,
-      'number': _number,
-    });
-    response = await Dio()
-        .post('http://192.168.31.71:8080/luggage/neworder', data: formData);
-    print('response = ${response}');
-    Map<String, dynamic> data = json.decode(response.toString());
+    String succeedJson = '{"status":200,"msg":"OK","data":"D180","ok":true}';
+    String faliureJson = '{"status":500,"msg":"电话号码错误","data":null,"ok":false}';
+
+//    Response response;
+//    FormData formData = FormData.from({
+//      'savername': _saverName,
+//      'gender': _sex,
+//      'phonenumber': _phoneNumber,
+//      'recievername': _recieveName,
+//      'hotel': _hotel,
+//      'luggagedescribe': _luggageDescribe,
+//      'savetime': _saveTime,
+//      'saveforetime': _saveForeTime,
+//      'number': _number,
+//    });
+//    response = await Dio()
+//        .post('http://192.168.31.71:8080/luggage/neworder', data: formData);
+//    print('response = ${response}');
+    //Map<String, dynamic> data = json.decode(response.toString());
+    Map<String, dynamic> data = json.decode(succeedJson);
 
     showDialog(
         context: context,
@@ -550,15 +554,27 @@ class DepositFormState extends State<DepositForm> {
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+//                  Text(
+//                    data['msg'].toString(),
+//                  ),
                   Text(
-                    data['msg'].toString(),
+                    '领取二维码:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: ScreenUtil.getInstance().setHeight(60.0),
+                    ),
                   ),
-                  QrImage(
-                    data: '${data['data'].toString()}',
-                    size: 100.0,
-                    embeddedImage: AssetImage('images/pic.png'),
-                    embeddedImageStyle:
-                        QrEmbeddedImageStyle(size: Size(40, 40)),
+                  Container(
+                    width: ScreenUtil.getInstance().setWidth(600.0),
+                    height: ScreenUtil.getInstance().setHeight(520.0),
+                    alignment: Alignment.center,
+                    child: QrImage(
+                      data: '${data['data'].toString()}',
+                      size: 300.0,
+                      embeddedImage: AssetImage('images/pic.png'),
+                      embeddedImageStyle:
+                          QrEmbeddedImageStyle(size: Size(40, 40)),
+                    ),
                   ),
                 ],
               ),
