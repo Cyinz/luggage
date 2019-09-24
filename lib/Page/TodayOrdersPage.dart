@@ -10,6 +10,9 @@ class TodayOrdersPage extends StatefulWidget {
 }
 
 class TodayOrdersState extends State<TodayOrdersPage> {
+  //当天行李件数
+  int _todayNumbers;
+
   final _todayOrdersFormKey = GlobalKey<FormState>();
   String _today =
       '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
@@ -28,6 +31,7 @@ class TodayOrdersState extends State<TodayOrdersPage> {
       setState(() {
         _today = '${date.year}-${date.month}-${date.day}';
       });
+
     }
   }
 
@@ -37,31 +41,38 @@ class TodayOrdersState extends State<TodayOrdersPage> {
     //设置屏幕设计稿,默认 width:1080px, height:1920px
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('统计某一日期行李件数'),
+      ),
       body: Form(
         key: _todayOrdersFormKey,
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(
-                    top: ScreenUtil.getInstance().setHeight(15.0)),
-                child: InkWell(
-                  onTap: _selectDate,
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        _today,
-                        style: TextStyle(
-                            fontSize: ScreenUtil.getInstance().setHeight(32.0)),
-                      ),
-                      Icon(Icons.arrow_drop_down),
-                    ],
-                  ),
-                ),
+              SizedBox(
+                height: ScreenUtil.getInstance().setHeight(30.0),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    '选择日期：',
+                  ),
+                  InkWell(
+                    onTap: _selectDate,
+                    child: Text(
+                      _today,
+                      style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setHeight(32.0)),
+                    ),
+                  ),
+                  Icon(Icons.arrow_drop_down),
+                ],
+              ),
+              SizedBox(
+                height: ScreenUtil.getInstance().setHeight(30.0),
+              ),
+              Text('当天行李件数：')
             ],
           ),
         ),

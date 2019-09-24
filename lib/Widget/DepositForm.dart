@@ -332,6 +332,7 @@ class DepositFormState extends State<DepositForm> {
                                   labelText:
                                       '${MyLocalizations.of(context).pleaseEnterPhoneText}',
                                 ),
+                                keyboardType: TextInputType.phone,
                                 onSaved: (String value) {
                                   setState(() {
                                     _phoneNumber = value;

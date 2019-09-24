@@ -83,6 +83,7 @@ class LoginFormState extends State<LoginForm> {
                 labelText: 'UserLoginName',
                 helperText: '',
               ),
+              keyboardType: TextInputType.emailAddress,
               validator: (String value) {
                 if (value.isEmpty) {
                   return "账号不能为空！";

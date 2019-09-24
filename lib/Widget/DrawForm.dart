@@ -19,13 +19,15 @@ class DrawFormState extends State<DrawForm> {
   final _drawForm = GlobalKey<FormState>();
 
   //行李领取码
-  String _getcode;
+  String _getcode = '';
 
   //状态码
   int state;
 
   //扫码得到的信息
   String _barcode = '扫码得到的信息';
+
+  TextEditingController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class DrawFormState extends State<DrawForm> {
             Container(
               width: ScreenUtil.getInstance().setWidth(800.0),
               child: TextFormField(
+                controller: _controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: '${MyLocalizations.of(context).getcodeText}',
@@ -110,18 +113,12 @@ class DrawFormState extends State<DrawForm> {
               ),
             ),
 
-            Text(_barcode),
+            //Text(_barcode),
             RaisedButton(
               onPressed: () {
                 scan();
               },
               child: Text('${MyLocalizations.of(context).scanText}'),
-            ),
-            QrImage(
-              data: 'D180',
-              size: 100.0,
-              embeddedImage: AssetImage('images/pic.png'),
-              embeddedImageStyle: QrEmbeddedImageStyle(size: Size(40, 40)),
             ),
           ],
         ),
@@ -135,6 +132,7 @@ class DrawFormState extends State<DrawForm> {
       print('扫码结果：' + barcode);
       setState(() {
         _barcode = barcode;
+        query(barcode, 0);
       });
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
@@ -169,13 +167,13 @@ class DrawFormState extends State<DrawForm> {
     //预计领取时间
     String saveforetime;
 
-    Response response;
-    FormData formData = FormData.from({
-      'getcode': getcode,
-      'state': state,
-    });
-    response = await Dio()
-        .post('http://192.168.31.71:8080/luggage/getluggage', data: formData);
+//    Response response;
+//    FormData formData = FormData.from({
+//      'getcode': getcode,
+//      'state': state,
+//    });
+//    response = await Dio()
+//        .post('http://192.168.31.71:8080/luggage/getluggage', data: formData);
 
     //未领取返回的Json
     String successJson =
@@ -184,7 +182,8 @@ class DrawFormState extends State<DrawForm> {
     String failureJson =
         '{"status":250,"msg":"getted","data":{"savername":"陈尹哲","phonenumber":"13336550309","receivername":"金泽龙","hotel":"国际交流中心","describe":"1件无损坏","savetime":"2019-7-29","saveforetime":"2019-8-1","gettime":"gettime","sendstate":1,"getcode":"D180","istoken":1},"ok":false}';
 
-    Map<String, dynamic> data = json.decode(response.toString());
+    //Map<String, dynamic> data = json.decode(response.toString());
+    Map<String, dynamic> data = json.decode(successJson);
     print(data);
 
     //查询后弹出检查信息表
