@@ -247,8 +247,6 @@ class OrderListPageState extends State<OrderListPage> {
               header: Row(
                 children: <Widget>[
                   Text('经手订单'),
-                  SizedBox(width: ScreenUtil.getInstance().setWidth(600.0),),
-                  IconButton(icon: Icon(Icons.refresh), onPressed: (){}),
                 ],
               ),
               rowsPerPage: 10,

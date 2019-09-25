@@ -9,6 +9,7 @@ import 'package:luggagemanagementsystem/Page/OrderListPage.dart';
 import 'package:luggagemanagementsystem/Page/TodayOrdersPage.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizations.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizationsDelegate.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MyApp());
 
@@ -54,6 +55,12 @@ class MyAppState extends State<MyApp> {
         });
       }
     };
+
+    var permission = PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
+    print('permisson status is ${permission.toString()}');
+    PermissionHandler().requestPermissions(<PermissionGroup>[
+      PermissionGroup.storage,
+    ]);
   }
 
   @override

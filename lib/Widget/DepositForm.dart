@@ -566,17 +566,43 @@ class DepositFormState extends State<DepositForm> {
                     ),
                   ),
                   Container(
-                    width: ScreenUtil.getInstance().setWidth(600.0),
-                    height: ScreenUtil.getInstance().setHeight(520.0),
-                    alignment: Alignment.center,
-                    child: QrImage(
-                      data: '${data['data'].toString()}',
-                      size: 300.0,
-                      embeddedImage: AssetImage('images/pic.png'),
-                      embeddedImageStyle:
-                          QrEmbeddedImageStyle(size: Size(40, 40)),
-                    ),
-                  ),
+                      width: ScreenUtil.getInstance().setWidth(600.0),
+                      height: ScreenUtil.getInstance().setHeight(520.0),
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onLongPress: () {
+                          showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return Center(
+                                  child: Container(
+                                    width: ScreenUtil.getInstance().setWidth(400.0),
+                                    child: FlatButton(
+                                      color: Colors.white,
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text(
+                                        '打印',
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              });
+                        },
+                        child: Image.network(
+                            'http://qr.topscan.com/api.php?text=${data['data']}'),
+                      )
+//                    QrImage(
+//                      data: '${data['data'].toString()}',
+//                      size: 300.0,
+//                      embeddedImage: AssetImage('images/pic.png'),
+//                      embeddedImageStyle:
+//                          QrEmbeddedImageStyle(size: Size(40, 40)),
+//                    ),
+                      ),
                 ],
               ),
               actions: <Widget>[

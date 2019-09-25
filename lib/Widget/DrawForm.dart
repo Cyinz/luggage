@@ -112,13 +112,25 @@ class DrawFormState extends State<DrawForm> {
                 ),
               ),
             ),
-
             //Text(_barcode),
             RaisedButton(
+              color: Colors.teal,
               onPressed: () {
                 scan();
               },
-              child: Text('${MyLocalizations.of(context).scanText}'),
+              child: Container(
+                alignment: Alignment.center,
+                height: ScreenUtil.getInstance().setHeight(80.0),
+                width: ScreenUtil.getInstance().setWidth(400.0),
+                child: Text(
+                  '${MyLocalizations.of(context).scanText}',
+                  style: TextStyle(
+                    fontSize: ScreenUtil.getInstance().setHeight(40.0),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
