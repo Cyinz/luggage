@@ -397,7 +397,6 @@ class LosePageState extends State<LosePage> {
                   ),
                   DataColumn(
                     label: Container(
-
                       width: ScreenUtil.getInstance().setWidth(200.0),
                       alignment: Alignment.center,
                       child: Text('修改订单'),
