@@ -27,7 +27,6 @@ _selectDate() async {
   } else {}
 }
 
-
 class PostDataSource extends DataTableSource {
   final List _posts = responseJson;
   int _selectedCount = 0;
@@ -484,7 +483,7 @@ class LosePageState extends State<LosePage> {
     print(response);
 
     String resMessage =
-    //response.toString();
+        //response.toString();
         '[{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"2c29e792-ca3e-11e9-8d8f-2fb4f7bbc196","savername":"陈尹哲男","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"国际交流中心","luggagedecribe":"3无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"F720","luggageistoken":0},{"orderid":"61b52136-c4b9-11e9-8e5d-3753fbf1c60c","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"国际交流中心","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-7-30","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"7554","luggageistoken":0},{"orderid":"8e173cf0-cccf-11e9-b6d1-07ba93afb57e","savername":"金先生男","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"国际交流中心","luggagedecribe":"3无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"2019-09-05 20:26:54","messagesendstate":1,"luggagegetcode":"i699","luggageistoken":1}]';
 
     setState(() {
@@ -503,10 +502,8 @@ class LosePageState extends State<LosePage> {
     FormData formData = FormData.from({
       'recievername': name,
     });
-    response = await Dio().post(
-        'http://192.168.31.71:8080/record/BySavername',
-        data: formData,
-        options: Options(responseType: ResponseType.plain));
+    response = await Dio().post('http://192.168.31.71:8080/record/BySavername',
+        data: formData, options: Options(responseType: ResponseType.plain));
     print(response);
 
     setState(() {
@@ -626,7 +623,7 @@ class LosePageState extends State<LosePage> {
                       border: UnderlineInputBorder(),
                       labelText: '请输入查找信息',
                     ),
-                    onSaved: (val){
+                    onSaved: (val) {
                       setState(() {
                         msg = val;
                       });
