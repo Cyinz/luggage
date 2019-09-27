@@ -177,13 +177,13 @@ class LoginFormState extends State<LoginForm> {
   login(String userloginname, String password) async {
     print("userloginname : ${userloginname}, password : ${password}");
 
-//    Response response;
-//    FormData formData = FormData.from({
-//      'userloginname': userloginname,
-//      'password': password,
-//    });
-//    response = await Dio()
-//        .post('http://192.168.31.71:8080/user/userLogin', data: formData);
+    Response response;
+    FormData formData = FormData.from({
+      'userloginname': userloginname,
+      'password': password,
+    });
+    response = await Dio()
+        .post('http://192.168.31.71:8080/user/userLogin', data: formData);
 
     //登陆成功返回的Json
     String successJson =
@@ -192,7 +192,7 @@ class LoginFormState extends State<LoginForm> {
     String failureJson =
         '{"status":500,"msg":"用户名或密码错误","data":null,"ok":false}';
 
-    Map<String, dynamic> data = json.decode(successJson);
+    Map<String, dynamic> data = json.decode(response.toString());
     //Map<String, dynamic> data = json.decode(successJson);
     print(data);
 
@@ -251,10 +251,6 @@ class LoginFormState extends State<LoginForm> {
             );
           }
         });
-
-    //saveUserMessage(userloginname, password);
-
-    //Navigator.of(context).pushReplacementNamed("/");
   }
 
   //保存行李员信息

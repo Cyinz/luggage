@@ -13,6 +13,23 @@ int _rowCount = 0;
 
 BuildContext _context;
 
+String storeTo;
+
+//日期选择器返回时间
+_selectDate() async {
+  DateTime date = await showDatePicker(
+      context: _context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now().subtract(new Duration(days: 1)),
+      lastDate: DateTime(2100));
+
+  if (date == null) {
+    return;
+  } else {
+    storeTo = '${date.year}-${date.month}-${date.day}';
+  }
+}
+
 class PostDataSource extends DataTableSource {
   final List _posts = responseJson;
   int _selectedCount = 0;
@@ -48,7 +65,9 @@ class PostDataSource extends DataTableSource {
         ),
         DataCell(
           RaisedButton(
+            color: Colors.teal,
             onPressed: () {
+              storeTo = '${_posts[index]['luggagegetcode'].toString()}';
               print('onPressed');
               showDialog(
                   context: _context,
@@ -57,16 +76,250 @@ class PostDataSource extends DataTableSource {
                     return AlertDialog(
                       title: Text('修改订单'),
                       content: Form(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Text('getcode: ${_posts[index]['luggagegetcode'].toString()}'),
-                            Text('savername: ${_posts[index]['savername'].toString()}'),
-                            Text('phonenumber: ${_posts[index]['saverphonenumber'].toString()}'),
-                            Text('number: ${_posts[index]['luggagedecribe'].toString()}'),
-                            Text('luggagedescribe: ${_posts[index]['luggagedecribe'].toString()}'),
-                            Text('savetime: ${_posts[index]['luggagesavetime'].toString()}'),
-                            Text('saveforetime: ${_posts[index]['luggagesaveforetime'].toString()}'),
+                        child: Table(
+                          columnWidths: {
+                            0: FixedColumnWidth(ScreenUtil.getInstance().setWidth(80.0),),
+                            1: FixedColumnWidth(ScreenUtil.getInstance().setWidth(300.0),),
+                          },
+                          children: [
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '姓名：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: TextFormField(
+                                  initialValue: '${_posts[index]['savername'].toString()}',
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  onSaved: (String value) {
+
+                                  },
+                                ),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '手机号：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: TextFormField(
+                                  initialValue: '${_posts[index]['saverphonenumber'].toString()}',
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  onSaved: (String value) {
+
+                                  },
+                                ),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '件数：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: TextFormField(
+                                  initialValue: '${_posts[index]['luggagedecribe'].toString()}',
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  onSaved: (String value) {
+
+                                  },
+                                ),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '描述：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: TextFormField(
+                                  initialValue: '${_posts[index]['luggagedecribe'].toString()}',
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  onSaved: (String value) {
+
+                                  },
+                                ),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '寄存时间：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              //luggagesavetime
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Text('${_posts[index]['luggagesavetime'].toString()}'),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '存放至：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                    top:
+                                    ScreenUtil.getInstance().setHeight(15.0)),
+                                child: InkWell(
+                                  onTap: _selectDate,
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(
+                                        '${_posts[index]['luggagesaveforetime'].toString()}',
+                                        style: TextStyle(
+                                            fontSize: ScreenUtil.getInstance()
+                                                .setHeight(32.0)),
+                                      ),
+                                      Icon(Icons.arrow_drop_down),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil.getInstance().setHeight(20.0),
+                              ),
+                            ]),
+                            TableRow(children: [
+                              Container(
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    '取行李码：',
+                                    style: TextStyle(
+                                      fontSize:
+                                      ScreenUtil.getInstance().setWidth(35.0),
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                height: ScreenUtil.getInstance().setHeight(80.0),
+                                child: Text(storeTo),
+                              ),
+                            ]),
                           ],
                         ),
                       ),
@@ -91,7 +344,7 @@ class PostDataSource extends DataTableSource {
                     );
                   });
             },
-            child: Text('修改订单'),
+            child: Text('修改订单',style: TextStyle(color: Colors.white),),
           ),
         ),
       ],
@@ -135,23 +388,23 @@ class OrderListPageState extends State<OrderListPage> {
 
   //通过行李员姓名获取订单列表
   getOrderlist(String name) async {
-//    Response response;
-//    FormData formData = FormData.from({
-//      'recievername': name,
-//    });
-//    response = await Dio().post(
-//        'http://192.168.31.71:8080/record/ByReceiverName',
-//        data: formData,
-//        options: Options(responseType: ResponseType.plain));
-//    print(response);
+    Response response;
+    FormData formData = FormData.from({
+      'recievername': name,
+    });
+    response = await Dio().post(
+        'http://192.168.31.71:8080/record/ByReceiverName',
+        data: formData,
+        options: Options(responseType: ResponseType.plain));
+    print(response);
 
     String resMessage =
         //response.toString();
         '[{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"0ab03b26-c259-11e9-bb85-39c842f1f3ed","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"22","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"s851","luggageistoken":0},{"orderid":"2c29e792-ca3e-11e9-8d8f-2fb4f7bbc196","savername":"陈尹哲男","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"国际交流中心","luggagedecribe":"3无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"F720","luggageistoken":0},{"orderid":"61b52136-c4b9-11e9-8e5d-3753fbf1c60c","savername":"金先生","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"国际交流中心","luggagedecribe":"1件无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-7-30","luggagegettime":"gettime","messagesendstate":1,"luggagegetcode":"7554","luggageistoken":0},{"orderid":"8e173cf0-cccf-11e9-b6d1-07ba93afb57e","savername":"金先生男","saverphonenumber":"13631218312","recievername":"行李员甲","luggagehotel":"国际交流中心","luggagedecribe":"3无损坏","luggagesavetime":"2019-7-29","luggagesaveforetime":"2019-2-1","luggagegettime":"2019-09-05 20:26:54","messagesendstate":1,"luggagegetcode":"i699","luggageistoken":1}]';
 
     setState(() {
-      responseJson = json.decode(resMessage);
-      //responseJson = json.decode(response.toString());
+      //responseJson = json.decode(resMessage);
+      responseJson = json.decode(response.toString());
       print('responseJson = ${responseJson}');
       _rowCount = responseJson.length;
       print(_rowCount);
@@ -210,9 +463,9 @@ class OrderListPageState extends State<OrderListPage> {
         child: ListView(
           children: <Widget>[
             PaginatedDataTable(
-              dataRowHeight: ScreenUtil.getInstance().setHeight(125.0),
-              columnSpacing: ScreenUtil.getInstance().setWidth(50.0),
-              headingRowHeight: ScreenUtil.getInstance().setHeight(100.0),
+              dataRowHeight: ScreenUtil.getInstance().setHeight(132.0),
+              columnSpacing: ScreenUtil.getInstance().setWidth(20.0),
+              headingRowHeight: ScreenUtil.getInstance().setHeight(70.0),
               sortColumnIndex: _sortColumnIndex,
               sortAscending: _sortAscending,
               columns: [
@@ -230,6 +483,8 @@ class OrderListPageState extends State<OrderListPage> {
                     }),
                 DataColumn(
                   label: Container(
+                    alignment: Alignment.center,
+                    width: ScreenUtil.getInstance().setWidth(200.0),
                     child: Text('手机号'),
                   ),
                 ),
@@ -240,6 +495,8 @@ class OrderListPageState extends State<OrderListPage> {
                 ),
                 DataColumn(
                   label: Container(
+                    alignment: Alignment.center,
+                    width: ScreenUtil.getInstance().setWidth(200.0),
                     child: Text('修改订单'),
                   ),
                 ),

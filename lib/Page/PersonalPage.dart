@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizations.dart';
 import 'package:luggagemanagementsystem/Util/MyLocalizationsDelegate.dart';
 import 'package:luggagemanagementsystem/main.dart';
@@ -94,6 +95,16 @@ class PersonalState extends State<PersonalPage> {
                       height: ScreenUtil.getInstance().setHeight(120.0),
                       color: Colors.white,
                       child: ListTile(
+                        onTap: (){
+                          Fluttertoast.showToast(
+                            msg: '暂无此功能',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIos: 1,
+                            backgroundColor: Colors.grey,
+                            textColor: Colors.white,
+                          );
+                        },
                         leading: Icon(
                           Icons.person_outline,
                           color: Colors.teal,
@@ -129,42 +140,6 @@ class PersonalState extends State<PersonalPage> {
                     Divider(
                       height: ScreenUtil.getInstance().setHeight(1.0),
                     ),
-//                    Container(
-//                      height: ScreenUtil.getInstance().setHeight(120.0),
-//                      color: Colors.white,
-//                      child: ListTile(
-//                        leading: Icon(
-//                          Icons.message,
-//                          color: Colors.teal,
-//                        ),
-//                        title: Text('${MyLocalizations.of(context).aboutUsText}'),
-//                        trailing: Icon(
-//                          Icons.arrow_forward_ios,
-//                          color: Colors.grey[350],
-//                        ),
-//                      ),
-//                    ),
-//                    Container(
-//                      height: ScreenUtil.getInstance().setHeight(120.0),
-//                      color: Colors.white,
-//                      child: ListTile(
-//                        leading: Icon(
-//                          Icons.today,
-//                          color: Colors.teal,
-//                        ),
-//                        title: Text('${MyLocalizations.of(context).todayOrdersText}'),
-//                        trailing: Icon(
-//                          Icons.arrow_forward_ios,
-//                          color: Colors.grey[350],
-//                        ),
-//                        onTap: (){
-//                          Navigator.of(context).pushNamed('/today');
-//                        },
-//                      ),
-//                    ),
-//                    Divider(
-//                      height: ScreenUtil.getInstance().setHeight(1.0),
-//                    ),
                     Container(
                       height: ScreenUtil.getInstance().setHeight(120.0),
                       color: Colors.white,
@@ -190,6 +165,16 @@ class PersonalState extends State<PersonalPage> {
                       height: ScreenUtil.getInstance().setHeight(120.0),
                       color: Colors.white,
                       child: ListTile(
+                        onTap: (){
+                          Fluttertoast.showToast(
+                            msg: '暂无此功能',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIos: 1,
+                            backgroundColor: Colors.grey,
+                            textColor: Colors.white,
+                          );
+                        },
                         leading: Icon(
                           Icons.update,
                           color: Colors.teal,

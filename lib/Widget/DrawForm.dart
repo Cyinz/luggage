@@ -94,7 +94,7 @@ class DrawFormState extends State<DrawForm> {
                   //输入有内容后
                   if (_drawForm.currentState.validate()) {
                     _drawForm.currentState.save();
-                    //query(_getcode, 0);
+                    query(_getcode, 0);
                   }
                 },
                 child: Container(
@@ -179,13 +179,13 @@ class DrawFormState extends State<DrawForm> {
     //预计领取时间
     String saveforetime;
 
-//    Response response;
-//    FormData formData = FormData.from({
-//      'getcode': getcode,
-//      'state': state,
-//    });
-//    response = await Dio()
-//        .post('http://192.168.31.71:8080/luggage/getluggage', data: formData);
+    Response response;
+    FormData formData = FormData.from({
+      'getcode': getcode,
+      'state': state,
+    });
+    response = await Dio()
+        .post('http://192.168.31.71:8080/luggage/getluggage', data: formData);
 
     //未领取返回的Json
     String successJson =
@@ -194,8 +194,8 @@ class DrawFormState extends State<DrawForm> {
     String failureJson =
         '{"status":250,"msg":"getted","data":{"savername":"陈尹哲","phonenumber":"13336550309","receivername":"金泽龙","hotel":"国际交流中心","describe":"1件无损坏","savetime":"2019-7-29","saveforetime":"2019-8-1","gettime":"gettime","sendstate":1,"getcode":"D180","istoken":1},"ok":false}';
 
-    //Map<String, dynamic> data = json.decode(response.toString());
-    Map<String, dynamic> data = json.decode(successJson);
+    Map<String, dynamic> data = json.decode(response.toString());
+    //Map<String, dynamic> data = json.decode(successJson);
     print(data);
 
     //查询后弹出检查信息表
@@ -252,6 +252,24 @@ class DrawFormState extends State<DrawForm> {
               actions: <Widget>[
                 RaisedButton(
                   color: Colors.grey,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    '确定',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            );
+          }
+          else if(data['status'] == 500){
+            return AlertDialog(
+              title: Text('查询结果'),
+              content: Text('${data['msg']}'),
+              actions: <Widget>[
+                RaisedButton(
+                  color: Colors.blue,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
