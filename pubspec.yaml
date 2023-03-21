@@ -27,14 +27,14 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_screenutil: ^0.6.0
   flutter_icons: ^0.2.0
-  http: ^0.12.0+2
-  dio: ^2.1.16
+  http: ">=0.12.0+2 <0.14.0"
+  dio: ">=2.1.16 <6.0.0"
   shared_preferences: ^0.5.3+4
-  intl: ^0.15.8
+  intl: ">=0.15.8 <0.18.0"
   date_format: ^1.0.6
   qr_flutter: ^3.0.1
   barcode_scan: ^1.0.0
-  charts_flutter: ^0.8.1
+  charts_flutter: ">=0.8.1 <0.13.0"
   permission_handler: ^3.2.2
   image_gallery_saver: ^1.2.2
   fluttertoast: ^3.1.3
